@@ -24,3 +24,29 @@
 .footer-pills .pill { display: inline-flex; align-items: center; gap: 6px; text-decoration: none;}
 .footer-pills .pill-icon { width: 16px; height: 16px; display: block; }
 .footer-pills .pill:hover { background: rgba(232,232,232,0.1); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.35); }
+
+@media (max-width: 768px) {
+  .footer-layout { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .footer-right { justify-items: start; }
+  .footer-pills { justify-content: flex-start; }
+  .footer-headings li { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+}
+
+@media (max-width: 560px) {
+  .footer { padding: 28px 0; margin-top: 16px; }
+  .footer-layout { grid-template-columns: 1fr; gap: 20px; }
+  .footer-right { justify-items: start; gap: 8px; }
+  .footer-pills { gap: 6px; }
+  .footer-headings li { font-size: clamp(1.2rem, 2vw, 1.5rem); margin-bottom: 4px; }
+  .footer-mini li { font-size: 0.9rem; }
+  .copyright { font-size: 0.85rem; }
+}
+
+@media (max-width: 420px) {
+  .footer { padding: 20px 0; }
+  .footer-layout { gap: 16px; }
+  .footer-headings li { font-size: 1.1rem; }
+  .footer-mini { display: none; }
+  .footer-right { gap: 6px; }
+  .footer-pills .pill-icon { width: 14px; height: 14px; }
+}

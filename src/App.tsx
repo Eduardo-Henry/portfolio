@@ -1,5 +1,4 @@
-import './styles/tokens.css'
-import './styles/base.css'
+import './styles.css'
 import Header from './components/organisms/Header'
 import Hero from './components/organisms/Hero'
 import ImageParallax from './components/organisms/ImageParallax'
@@ -47,10 +46,10 @@ const projects: Project[] = [
 
 export default function App() {
   return (
-    <div className="app">
+    <div className="app" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <SplashScreen />
       <Header />
-      <main>
+      <main style={{ flex: 1 }}>
         <Hero />
         <ImageParallax />
         <About />

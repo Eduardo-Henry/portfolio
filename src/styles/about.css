@@ -51,8 +51,16 @@
 }
 
 @media (max-width: 560px) {
-  .about-section { min-height: 150vh; }
-  .about-grid { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
-  .subhead { font-size: 20px; margin: 8px 0 6px; }
-  .reveal-text { font-size: 0.95rem; }
+  .about-section { min-height: 140vh; }
+  .about-grid { grid-template-columns: 1fr; gap: 20px; padding: 20px 16px; }
+  .subhead { font-size: 18px; margin: 6px 0 4px; }
+  .reveal-text { font-size: 0.9rem; line-height: 1.6; }
+  .intro-text { font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .about-section { min-height: 130vh; }
+  .about-grid { gap: 16px; padding: 16px 12px; }
+  .subhead { font-size: 16px; }
+  .reveal-text { font-size: 0.85rem; }
 }

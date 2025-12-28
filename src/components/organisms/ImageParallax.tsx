@@ -24,7 +24,7 @@ export default function ImageParallax() {
   const frameRef = useRef<number | null>(null)
   const activationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [parallaxReady, setParallaxReady] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
   const [styleState, setStyleState] = useState<StyleState>({
     width: BASE_WIDTH,
     height: BASE_WIDTH * ASPECT_RATIO,
@@ -33,20 +33,14 @@ export default function ImageParallax() {
     opacity: 0,
   })
 
-  // Detectar mobile
+  // Detectar mobile - SEMPRE executado
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768)
     }
-    checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
-
-  // Se for mobile, não renderizar parallax
-  if (isMobile) {
-    return null
-  }
 
   const resolveAnchors = useCallback(() => {
     heroAnchorRef.current = document.getElementById('hero-image-anchor')
@@ -133,7 +127,6 @@ export default function ImageParallax() {
     }
 
     if (timelineLine >= aboutSectionTop) {
-      // Foto FIXA na posição About - não se move mais
       setStyleState({
         width: aboutWidth,
         height: aboutHeight,
@@ -198,6 +191,11 @@ export default function ImageParallax() {
       window.removeEventListener('resize', handleResize)
     }
   }, [parallaxReady, resolveAnchors, updatePosition])
+
+  // SE FOR MOBILE, RENDERIZAR VAZIO - MAS OS HOOKS JÁ FORAM EXECUTADOS
+  if (isMobile) {
+    return null
+  }
 
   return (
     <div className="parallax-layer" aria-hidden="true">

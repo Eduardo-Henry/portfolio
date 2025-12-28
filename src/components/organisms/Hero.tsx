@@ -19,7 +19,7 @@ export default function Hero() {
           </div>
           <div className="scroll-hint" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
             <span className="hint-text">Scroll to explore</span>
-            <span className="hint-arrow">\/</span>
+            <span className="hint-arrow">v</span>
           </div>
         </div>
         <div className="hero-right" aria-hidden="true">

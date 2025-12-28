@@ -59,3 +59,14 @@
     width: min(50vw, 240px);
   }
 }
+
+@media (max-width: 420px) {
+  .splash-logo {
+    width: 80vw;
+    height: 80vh;
+    border-radius: 16px;
+  }
+  .splash-logo img {
+    width: min(60vw, 180px);
+  }
+}

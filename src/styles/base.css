@@ -35,5 +35,21 @@ body {
 .bg-guidelines { background: url('/src/assets/GuideLinesBlack.png') center/cover no-repeat; }
 
 @media (max-width: 560px) {
-  .nav a { margin-left: 12px; }
+  .nav a { margin-left: 8px; font-size: 0.9rem; }
+  .app { padding: 0 clamp(12px, 3vw, 20px); }
+  .section { padding: 32px 0; }
+  .section h2 { font-size: 1.5rem; }
+  .button { padding: 6px 10px; font-size: 0.85rem; }
+  .pill { padding: 5px 10px; font-size: 0.8rem; }
+}
+
+@media (max-width: 420px) {
+  .nav a { margin-left: 6px; font-size: 0.85rem; }
+  .app { padding: 0 clamp(10px, 2.5vw, 16px); }
+  .section { padding: 24px 0; }
+  .section h2 { font-size: 1.25rem; }
+  .display { font-size: clamp(2rem, 8vw, 72px); }
+  .button { padding: 5px 8px; font-size: 0.8rem; }
+  .pill { padding: 4px 8px; font-size: 0.75rem; }
+  .lead { font-size: clamp(0.9rem, 2vw, 1rem); }
 }

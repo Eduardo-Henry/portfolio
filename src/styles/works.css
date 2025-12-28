@@ -78,8 +78,18 @@
 }
 
 @media (max-width: 560px) {
-  .work-grid { grid-template-columns: 1fr; gap: 20px; }
-  .work-meta { padding: 16px 8px; }
-  .category-nav { gap: 8px; justify-content: flex-start; flex-wrap: wrap; }
-  .category-nav .pill { font-size: 0.72rem; padding: 3px 8px; }
+  .work-grid { grid-template-columns: 1fr; gap: 16px; }
+  .work-meta { padding: 12px 0; }
+  .category-nav { gap: 6px; justify-content: flex-start; flex-wrap: wrap; }
+  .category-nav .pill { font-size: 0.7rem; padding: 4px 10px; }
+  .work-title { font-size: 0.95rem; }
+  .work-tags li { font-size: 0.72rem; }
+  .case-btn { font-size: 0.8rem; padding: 5px 10px; }
+}
+
+@media (max-width: 420px) {
+  .work-grid { gap: 14px; }
+  .works-head { gap: 10px; }
+  .category-nav .pill { padding: 3px 8px; font-size: 0.65rem; }
+  .section h2 { font-size: 1.5rem; }
 }

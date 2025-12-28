@@ -42,6 +42,19 @@
 }
 
 @media (max-width: 560px) {
-	.contact-section { padding: 56px 20px; }
-	.contact-section .section-title { font-size: clamp(2.5rem, 14vw, 72px); }
+  .contact-section { padding: 48px 20px; }
+  .contact-section .section-title { font-size: clamp(2rem, 12vw, 60px); }
+  .contact-grid { gap: 28px; }
+  .input, .textarea { padding: 8px 10px; font-size: 0.95rem; }
+  .send-btn { padding: 8px 10px; font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .contact-section { padding: 40px 16px; }
+  .contact-section .section-title { font-size: clamp(1.8rem, 10vw, 48px); }
+  .contact-grid { gap: 24px; }
+  .contact-form { gap: 8px; }
+  .input, .textarea { padding: 7px 8px; font-size: 0.9rem; }
+  .textarea { min-height: 100px; }
+  .label { font-size: 0.9rem; }
 }

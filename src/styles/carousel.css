@@ -40,7 +40,13 @@
 }
 
 @media (max-width: 560px) {
-  .carousel-section { padding: 20px 0; }
-  .carousel-text { font-size: 1rem; }
-  .carousel-item { padding: 0 20px; }
+  .carousel-section { padding: 18px 0; }
+  .carousel-text { font-size: 0.95rem; }
+  .carousel-item { padding: 0 16px; }
+}
+
+@media (max-width: 420px) {
+  .carousel-section { padding: 16px 0; }
+  .carousel-text { font-size: 0.9rem; line-height: 1.2; }
+  .carousel-item { padding: 0 12px; }
 }
