@@ -32,6 +32,16 @@
   flex-shrink: 0;
   min-width: max-content;
   padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--text-main);
+  flex-shrink: 0;
 }
 .carousel-text {
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);

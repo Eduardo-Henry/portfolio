@@ -19,10 +19,7 @@ const aboutTexts = [
 
 export default function About() {
   const [isMobile, setIsMobile] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const touchStartX = useRef(0)
-  const touchEndX = useRef(0)
-  const autoSlideInterval = useRef<NodeJS.Timeout | null>(null)
+  const [expandedItem, setExpandedItem] = useState<string | null>(null)
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,48 +30,6 @@ export default function About() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  useEffect(() => {
-    if (!isMobile) return
-
-    const startAutoSlide = () => {
-      autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % aboutTexts.length)
-      }, 5000)
-    }
-
-    startAutoSlide()
-    return () => {
-      if (autoSlideInterval.current) clearInterval(autoSlideInterval.current)
-    }
-  }, [isMobile])
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.changedTouches[0].screenX
-  }
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX.current = e.changedTouches[0].screenX
-    handleSwipe()
-  }
-
-  const handleSwipe = () => {
-    const diff = touchStartX.current - touchEndX.current
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        // Swipe left - next slide
-        setCurrentSlide((prev) => (prev + 1) % aboutTexts.length)
-      } else {
-        // Swipe right - prev slide
-        setCurrentSlide((prev) => (prev - 1 + aboutTexts.length) % aboutTexts.length)
-      }
-      // Reset interval
-      if (autoSlideInterval.current) clearInterval(autoSlideInterval.current)
-      autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % aboutTexts.length)
-      }, 5000)
-    }
-  }
 
   return (
     <section id="about" className="section about-section bg-guidelines">
@@ -87,39 +42,27 @@ export default function About() {
           <h2 className="display section-title">About Me</h2>
 
           {isMobile ? (
-            <div
-              className="about-carousel"
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              <div className="carousel-items">
-                {aboutTexts.map((text, index) => (
-                  <div
-                    key={text.title}
-                    className={`carousel-text-item ${index === currentSlide ? 'active' : ''}`}
+            <div className="about-accordion">
+              {aboutTexts.map((text) => (
+                <div key={text.title} className="accordion-item">
+                  <button
+                    className="accordion-header"
+                    onClick={() =>
+                      setExpandedItem(expandedItem === text.title ? null : text.title)
+                    }
                   >
                     <h3 className="subhead">{text.title}</h3>
-                    <Text className="muted reveal-text">{text.copy}</Text>
-                  </div>
-                ))}
-              </div>
-              <div className="carousel-indicators">
-                {aboutTexts.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot ${index === currentSlide ? 'active' : ''}`}
-                    onClick={() => {
-                      setCurrentSlide(index)
-                      if (autoSlideInterval.current) {
-                        clearInterval(autoSlideInterval.current)
-                        autoSlideInterval.current = setInterval(() => {
-                          setCurrentSlide((prev) => (prev + 1) % aboutTexts.length)
-                        }, 5000)
-                      }
-                    }}
-                  />
-                ))}
-              </div>
+                    <span className="accordion-toggle">
+                      {expandedItem === text.title ? '−' : '+'}
+                    </span>
+                  </button>
+                  {expandedItem === text.title && (
+                    <div className="accordion-content">
+                      <Text className="muted reveal-text">{text.copy}</Text>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           ) : (
             <>

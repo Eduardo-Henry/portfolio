@@ -17,12 +17,14 @@ export default function Carousel() {
           {/* Original phrases */}
           {phrases.map((phrase, i) => (
             <div key={`original-${i}`} className="carousel-item">
+              <span className="carousel-dot" />
               <p className="carousel-text">{phrase}</p>
             </div>
           ))}
           {/* Duplicated for seamless loop */}
           {phrases.map((phrase, i) => (
             <div key={`duplicate-${i}`} className="carousel-item">
+              <span className="carousel-dot" />
               <p className="carousel-text">{phrase}</p>
             </div>
           ))}
